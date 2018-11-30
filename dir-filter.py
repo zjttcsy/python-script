@@ -23,7 +23,7 @@ def get_dir_list(path):
     return dir_set
 
 if __name__ == "__main__":
-    print("处理目录:" + target_dir)
+    print("目标目录:" + target_dir)
     print("过滤目录:" + filter_dir)
     answer = input("确定要进行目录去重？(yes/no)")
     if answer.lower() != "yes":
@@ -43,6 +43,11 @@ if __name__ == "__main__":
     print("处理目录处理前目录数:%d" % len(target_dir_set))
     print("重复目录个数：%d" % len(repeat_dir))
     print("处理后目录数:%d" % len(target_dir_set.difference(filter_dir_set)))
+
+    answer = input("请再次确认是否对目标目录进行过滤去重？(yes/no)")
+    if answer.lower() != "yes":
+        exit()
+    
     for dir in repeat_dir:
         path = target_dir + "\\" + dir
         shutil.rmtree(path)
